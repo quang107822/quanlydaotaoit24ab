@@ -49,6 +49,16 @@ public class UserController {
         );
     }
 
+    // SEARCH
+    @GetMapping("/search")
+    public ResponseEntity<List<User>> searchUsers(
+            @RequestParam(required = false) String keyword) {
+
+        return ResponseEntity.ok(
+                userService.searchUsers(keyword)
+        );
+    }
+
     // CREATE
     @PostMapping
     public ResponseEntity<User> createUser(
@@ -85,6 +95,17 @@ public class UserController {
     // ACTIVE / INACTIVE
     @PatchMapping("/{id}/active")
     public ResponseEntity<User> updateActive(
+            @PathVariable UUID id,
+            @RequestParam Boolean active) {
+
+        return ResponseEntity.ok(
+                userService.updateActive(id, active)
+        );
+    }
+
+    // STATUS endpoint retained alongside the existing /active endpoint
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<User> updateStatus(
             @PathVariable UUID id,
             @RequestParam Boolean active) {
 
