@@ -1,13 +1,13 @@
 package com.example.quanlydaotao;
 
-import com.example.quanlydaotao.entity.Department;
-import com.example.quanlydaotao.entity.Employee;
-import com.example.quanlydaotao.entity.EmployeePosition;
-import com.example.quanlydaotao.entity.Position;
-import com.example.quanlydaotao.repository.DepartmentRepository;
-import com.example.quanlydaotao.repository.EmployeePositionRepository;
-import com.example.quanlydaotao.repository.EmployeeRepository;
-import com.example.quanlydaotao.repository.PositionRepository;
+import com.example.quanlydaotao.n3.entity.Department;
+import com.example.quanlydaotao.n3.entity.Employee;
+import com.example.quanlydaotao.n3.entity.EmployeePosition;
+import com.example.quanlydaotao.n3.entity.Position;
+import com.example.quanlydaotao.n3.repository.DepartmentRepository;
+import com.example.quanlydaotao.n3.repository.EmployeePositionRepository;
+import com.example.quanlydaotao.n3.repository.EmployeeRepository;
+import com.example.quanlydaotao.n3.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -119,6 +119,167 @@ public class DataSeeder implements CommandLineRunner {
             employeePositionRepository.save(ep2);
 
             System.out.println("Da nap du lieu gia thanh cong! Ban co the mo Postman de test cac API GET.");
+        }
+
+        if (positionRepository.count() == 0) {
+            Department defaultDept = departmentRepository.findAll().stream().findFirst().orElse(null);
+            Position p1 = new Position();
+            p1.setCode("TRUONG_KHOA");
+            p1.setTitle("Trưởng khoa");
+            p1.setLevel(1);
+            p1.setDepartment(defaultDept);
+            positionRepository.save(p1);
+
+            Position p2 = new Position();
+            p2.setCode("PHO_KHOA");
+            p2.setTitle("Phó trưởng khoa");
+            p2.setLevel(2);
+            p2.setDepartment(defaultDept);
+            positionRepository.save(p2);
+
+            Position p3 = new Position();
+            p3.setCode("GV_COHUU");
+            p3.setTitle("Giảng viên cơ hữu");
+            p3.setLevel(3);
+            p3.setDepartment(defaultDept);
+            positionRepository.save(p3);
+
+            Position p4 = new Position();
+            p4.setCode("GV_THINHG");
+            p4.setTitle("Giảng viên thỉnh giảng");
+            p4.setLevel(4);
+            p4.setDepartment(defaultDept);
+            positionRepository.save(p4);
+
+            Position p5 = new Position();
+            p5.setCode("TRO_GIANG");
+            p5.setTitle("Trợ giảng");
+            p5.setLevel(5);
+            p5.setDepartment(defaultDept);
+            positionRepository.save(p5);
+            System.out.println("Da nap danh muc chuc vu mac dinh vao SQL Server!");
+        }
+
+        cleanVietnameseEncoding();
+    }
+
+    private void cleanVietnameseEncoding() {
+        try {
+            // 1. Clean departments
+            for (Department d : departmentRepository.findAll()) {
+                boolean changed = false;
+                if ("CNTT".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Công nghệ thông tin"); changed = true; }
+                else if ("OTO".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Công nghệ Ô tô"); changed = true; }
+                else if ("MKT".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Marketing"); changed = true; }
+                else if (d.getCode() != null && d.getCode().contains("DA")) { d.setCode("DDT"); d.setName("Khoa Điện - Điện tử"); changed = true; }
+                else if ("NNA".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Ngôn ngữ Anh"); changed = true; }
+                else if ("DD".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Điều dưỡng"); changed = true; }
+                else if ("DL".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Du lịch"); changed = true; }
+                else if ("KTE".equalsIgnoreCase(d.getCode())) { d.setName("Khoa Kinh tế"); changed = true; }
+                if (changed) departmentRepository.save(d);
+            }
+
+            // 2. Clean employees
+            for (Employee e : employeeRepository.findAll()) {
+                boolean changed = false;
+                
+                // Clean Full Name
+                if (e.getFullName() != null) {
+                    String name = e.getFullName();
+                    name = name.replace("Nguy?n", "Nguyễn")
+                               .replace("Tr?n", "Trần")
+                               .replace("Th?", "Thị")
+                               .replace("Ð?ng", "Đặng")
+                               .replace("?ng", "Đặng")
+                               .replace("Ð?t", "Đạt")
+                               .replace("C?m", "Cẩm")
+                               .replace("V?n", "Văn")
+                               .replace("Van", "Văn")
+                               .replace("Hu?nh", "Huỳnh")
+                               .replace("Ph?m", "Phạm")
+                               .replace("BA1i", "Bùi")
+                               .replace("Bùi Van", "Bùi Văn")
+                               .replace("VA", "Võ")
+                               .replace("VA", "Võ")
+                               .replace("LA", "Lê")
+                               .replace("LA", "Lê")
+                               .replace("KhA'i", "Khải")
+                               .replace("PhAc", "Phúc")
+                               .replace("TA1ng", "Tùng")
+                               .replace("Cu?ng", "Cường")
+                               .replace("Ð", "Đ")
+                               .replace("?", "");
+                    name = name.trim().replaceAll("\\s+", " ");
+                    if (!name.equals(e.getFullName())) {
+                        e.setFullName(name);
+                        changed = true;
+                    }
+                }
+
+                // Clean Academic Degree
+                if (e.getAcademicDegree() != null) {
+                    String deg = e.getAcademicDegree();
+                    if (deg.startsWith("Th") || deg.contains("Th")) deg = "Thạc sĩ";
+                    else if (deg.startsWith("Ti") || deg.contains("Ti")) deg = "Tiến sĩ";
+                    else if (deg.startsWith("C")) deg = "Cử nhân";
+                    else if (deg.startsWith("K")) deg = "Kỹ sư";
+                    if (!deg.equals(e.getAcademicDegree())) { e.setAcademicDegree(deg); changed = true; }
+                }
+
+                // Clean Academic Title
+                if (e.getAcademicTitle() != null) {
+                    String title = e.getAcademicTitle();
+                    if (title.contains("Ph")) title = "Phó Giáo sư";
+                    else if (title.contains("Giáo sư") || title.contains("GiAo s")) title = "Giáo sư";
+                    else if (title.contains("Gi")) title = "Giảng viên";
+                    if (!title.equals(e.getAcademicTitle())) { e.setAcademicTitle(title); changed = true; }
+                }
+
+                // Clean Specialization
+                if (e.getSpecialization() != null) {
+                    String spec = e.getSpecialization();
+                    if (spec.contains("Khoa") || spec.contains("li")) spec = "Khoa học dữ liệu";
+                    else if (spec.contains("thu?t ph") || spec.contains("thuật ph")) spec = "Kỹ thuật phần mềm";
+                    else if (spec.contains("ph?n") || spec.contains("phần")) spec = "Công nghệ phần mềm";
+                    else if (spec.contains("an to") || spec.contains("an toàn")) spec = "Mạng và an toàn thông tin";
+                    else if (spec.contains("M?ng") || spec.contains("Mạng")) spec = "Mạng máy tính";
+                    else if (spec.contains("tu?") || spec.contains("nhân") || spec.contains("Tr")) spec = "Trí tuệ nhân tạo";
+                    else if (spec.contains("H?") || spec.contains("Hệ")) spec = "Hệ thống thông tin";
+                    else if (spec.contains("my t") || spec.contains("máy")) spec = "Kỹ thuật máy tính";
+                    else if (spec.contains("th?ng") || spec.contains("thông tin") || spec.contains("CA'ng") || spec.contains("Cng")) spec = "Công nghệ thông tin";
+                    if (!spec.equals(e.getSpecialization())) { e.setSpecialization(spec); changed = true; }
+                }
+
+                // Clean Gender
+                if (e.getGender() != null) {
+                    String g = e.getGender();
+                    if (g.contains("N") && !g.equalsIgnoreCase("Nam")) {
+                        e.setGender("Nữ");
+                        changed = true;
+                    }
+                }
+
+                // Clean Address
+                if (e.getAddress() != null && (e.getAddress().contains("N") || e.getAddress().contains("D"))) {
+                    e.setAddress("Đà Nẵng");
+                    changed = true;
+                }
+
+                // Clean Contract Type
+                if (e.getContractType() != null) {
+                    String ct = e.getContractType();
+                    if (ct.contains("Vi")) ct = "Viên chức";
+                    else if (ct.contains("C")) ct = "Cơ hữu";
+                    if (!ct.equals(e.getContractType())) { e.setContractType(ct); changed = true; }
+                }
+
+                if (changed) {
+                    employeeRepository.save(e);
+                }
+            }
+            System.out.println("Da chuan hoa va sua loi phong chu Tieng Viet trong Database thanh cong!");
+        } catch (Exception ex) {
+            System.err.println("Loi khi chuan hoa phong chu: " + ex.getMessage());
         }
     }
 }

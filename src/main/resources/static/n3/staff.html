@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Giảng viên & Nhân sự | Hệ thống Quản lý Đào tạo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/adminlte/css/adminlte.css" />
+    <link rel="stylesheet" href="/n3/css/staff.css" />
+</head>
+
+<body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
+<div class="app-wrapper">
+    <!-- Navbar -->
+    <nav class="app-header navbar navbar-expand bg-body shadow-sm">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                        <i class="bi bi-list fs-5"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-none d-md-block">
+                    <span class="nav-link fw-semibold text-primary">
+                        <i class="bi bi-mortarboard-fill me-1"></i>Hệ thống Quản lý Đào tạo
+                    </span>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto align-items-center gap-3">
+                <li class="nav-item">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill">
+                        <i class="bi bi-calendar-event me-1"></i>Học kỳ 1 / 2026
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 36px; height: 36px;">
+                            AD
+                        </div>
+                        <span class="d-none d-sm-inline fw-semibold small">Quản trị viên</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <div class="sidebar-brand">
+            <a href="index.html" class="brand-link text-decoration-none">
+                <img src="/adminlte/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
+                <span class="brand-text fw-bold">School Manager</span>
+            </a>
+        </div>
+
+        <div class="sidebar-wrapper">
+            <nav class="mt-2">
+                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" data-accordion="false">
+                    <!-- Section: Sinh viên -->
+                    <li class="nav-header text-uppercase text-secondary small fw-bold px-3 pt-3 pb-1">Đào tạo & Người học</li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="nav-icon bi bi-mortarboard"></i>
+                            <p>Quản lý sinh viên</p>
+                        </a>
+                    </li>
+
+                    <!-- Section: Giảng viên & Nhân sự -->
+                    <li class="nav-header text-uppercase text-primary-emphasis small fw-bold px-3 pt-3 pb-1">
+                        Giảng viên – Nhân sự
+                    </li>
+                    <li class="nav-item">
+                        <a href="/n3/staff.html?tab=employees" class="nav-link active">
+                            <i class="nav-icon bi bi-person-workspace text-primary"></i>
+                            <p>Hồ sơ Giảng viên</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/n3/staff.html?tab=departments" class="nav-link">
+                            <i class="nav-icon bi bi-building text-info"></i>
+                            <p>Khoa & Phòng ban</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/n3/staff.html?tab=positions" class="nav-link">
+                            <i class="nav-icon bi bi-award text-warning"></i>
+                            <p>Chức vụ & Vị trí</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/n3/staff.html?tab=assignments" class="nav-link">
+                            <i class="nav-icon bi bi-card-checklist text-success"></i>
+                            <p>Lịch sử phân công</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main p-3 p-md-4">
+        <!-- Breadcrumb / Header -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+            <div>
+                <h2 class="fw-bold mb-1 text-dark">Nhóm Quản lý Giảng viên – Nhân sự</h2>
+                <p class="text-muted mb-0 small">Quản lý hồ sơ cán bộ, giảng viên, cơ cấu tổ chức khoa phòng và phân công công tác</p>
+            </div>
+            <div>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Giảng viên – Nhân sự</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- KPI Summary Stats -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-xl-3">
+                <div class="kpi-card">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="kpi-value" id="kpiTotalStaff">0</div>
+                            <div class="kpi-label">Tổng số Giảng viên</div>
+                        </div>
+                        <div class="kpi-icon" style="background: var(--primary-gradient);">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="kpi-card">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="kpi-value text-primary" id="kpiTotalPhd">0</div>
+                            <div class="kpi-label">Tiến sĩ / GS / PGS</div>
+                        </div>
+                        <div class="kpi-icon" style="background: var(--purple-gradient);">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="kpi-card">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="kpi-value text-info" id="kpiTotalDepts">0</div>
+                            <div class="kpi-label">Khoa & Phòng ban</div>
+                        </div>
+                        <div class="kpi-icon" style="background: var(--info-gradient);">
+                            <i class="bi bi-building-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="kpi-card">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="kpi-value text-success" id="kpiActiveRate">100%</div>
+                            <div class="kpi-label">Tỉ lệ đang công tác</div>
+                        </div>
+                        <div class="kpi-icon" style="background: var(--success-gradient);">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Card with Custom Tabs -->
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-header bg-white border-bottom p-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <!-- Navigation Pills -->
+                <ul class="nav nav-pills nav-pills-custom" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-employees" type="button" role="tab">
+                            <i class="bi bi-person-workspace"></i>Hồ sơ Giảng viên
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-departments" type="button" role="tab">
+                            <i class="bi bi-building"></i>Khoa & Viện Đào tạo
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-positions" type="button" role="tab">
+                            <i class="bi bi-award"></i>Chức vụ & Vị trí
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-assignments" type="button" role="tab">
+                            <i class="bi bi-card-checklist"></i>Lịch sử Phân công
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Dynamic Quick Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                        <i class="bi bi-person-plus-fill me-1"></i>Thêm Giảng viên
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" id="btnRefreshEmployees" title="Làm mới dữ liệu">
+                        <i class="bi bi-arrow-clockwise me-1"></i>Làm mới
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body p-3 p-md-4">
+                <div class="tab-content">
+                    
+                    <!-- ========================================== -->
+                    <!-- TAB 1: HỒ SƠ GIẢNG VIÊN - NHÂN SỰ -->
+                    <!-- ========================================== -->
+                    <div class="tab-pane fade show active" id="tab-employees" role="tabpanel">
+                        <!-- Filter & Search Controls -->
+                        <div class="filter-bar">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-md-4">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                                        <input type="text" id="empSearchKeyword" class="form-control border-start-0" placeholder="Tìm theo mã GV, họ tên, email, sđt, chuyên môn..." />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <select id="empFilterDept" class="form-select form-select-sm">
+                                        <option value="">Tất cả khoa / phòng ban</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-md-2">
+                                    <select id="empFilterDegree" class="form-select form-select-sm">
+                                        <option value="">Tất cả học vị</option>
+                                        <option value="Tiến sĩ">Tiến sĩ</option>
+                                        <option value="Thạc sĩ">Thạc sĩ</option>
+                                        <option value="Cử nhân">Cử nhân</option>
+                                        <option value="Kỹ sư">Kỹ sư</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-md-2">
+                                    <select id="empFilterStatus" class="form-select form-select-sm">
+                                        <option value="">Tất cả trạng thái</option>
+                                        <option value="active">Đang công tác</option>
+                                        <option value="inactive">Đã nghỉ việc</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-md-1 text-end">
+                                    <button class="btn btn-light btn-sm w-100" id="btnResetFilters" title="Xóa bộ lọc">
+                                        <i class="bi bi-x-circle me-1"></i>Đặt lại
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employee Table -->
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                <tr>
+                                    <th style="width: 10%;">Mã GV</th>
+                                    <th style="width: 25%;">Họ và tên</th>
+                                    <th style="width: 15%;">Học hàm / Học vị</th>
+                                    <th style="width: 18%;">Khoa / Viện</th>
+                                    <th style="width: 14%;">Chức vụ</th>
+                                    <th style="width: 8%;">Trạng thái</th>
+                                    <th style="width: 10%;" class="text-end">Hành động</th>
+                                </tr>
+                                </thead>
+                                <tbody id="employeeTableBody">
+                                <tr>
+                                    <td colspan="7" class="text-center py-4 text-muted">
+                                        <span class="spinner-border spinner-border-sm me-2"></span>Đang tải dữ liệu giảng viên...
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- TAB 2: KHOA & VIỆN ĐÀO TẠO -->
+                    <!-- ========================================== -->
+                    <div class="tab-pane fade" id="tab-departments" role="tabpanel">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">Danh sách Khoa / Viện & Phòng ban trực thuộc</h5>
+                            <button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#addDeptModal">
+                                <i class="bi bi-plus-circle me-1"></i>Thêm Khoa / Viện mới
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                <tr>
+                                    <th style="width: 12%;">Mã Khoa</th>
+                                    <th style="width: 32%;">Tên Khoa / Phòng ban</th>
+                                    <th style="width: 18%;">Số điện thoại</th>
+                                    <th style="width: 20%;">Email liên hệ</th>
+                                    <th style="width: 10%;">Quy mô nhân sự</th>
+                                    <th style="width: 8%;" class="text-end">Hành động</th>
+                                </tr>
+                                </thead>
+                                <tbody id="deptTableBody">
+                                <tr>
+                                    <td colspan="6" class="text-center py-4 text-muted">Đang tải danh sách khoa...</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- TAB 3: CHỨC VỤ & VỊ TRÍ -->
+                    <!-- ========================================== -->
+                    <div class="tab-pane fade" id="tab-positions" role="tabpanel">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">Danh mục Chức danh & Vị trí công tác</h5>
+                            <button class="btn btn-warning btn-sm text-dark fw-semibold rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#addPositionModal">
+                                <i class="bi bi-plus-circle me-1"></i>Thêm Chức vụ mới
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                <tr>
+                                    <th style="width: 15%;">Mã chức vụ</th>
+                                    <th style="width: 35%;">Tên chức vụ / Vị trí</th>
+                                    <th style="width: 15%;">Cấp bậc (Level)</th>
+                                    <th style="width: 25%;">Trực thuộc Khoa / Đơn vị</th>
+                                    <th style="width: 10%;" class="text-end">Hành động</th>
+                                </tr>
+                                </thead>
+                                <tbody id="positionTableBody">
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-muted">Đang tải danh sách chức vụ...</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- TAB 4: LỊCH SỬ PHÂN CÔNG & BỔ NHIỆM -->
+                    <!-- ========================================== -->
+                    <div class="tab-pane fade" id="tab-assignments" role="tabpanel">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">Tổng hợp Phân công & Lịch sử công tác</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                <tr>
+                                    <th style="width: 25%;">Cán bộ / Giảng viên</th>
+                                    <th style="width: 20%;">Khoa / Bộ môn</th>
+                                    <th style="width: 18%;">Chức vụ bổ nhiệm</th>
+                                    <th style="width: 12%;">Ngày bắt đầu</th>
+                                    <th style="width: 12%;">Ngày kết thúc</th>
+                                    <th style="width: 13%;">Mô tả / Quyết định</th>
+                                </tr>
+                                </thead>
+                                <tbody id="assignmentTableBody">
+                                <tr>
+                                    <td colspan="6" class="text-center py-4 text-muted">Đang tải lịch sử phân công...</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer text-muted small py-3 px-4 bg-white border-top">
+        <div class="float-end d-none d-sm-inline">
+            Phiên bản 1.0.0
+        </div>
+        <strong>Quản lý Giảng viên – Nhân sự &copy; 2026</strong> Hệ thống Quản lý Đào tạo Đại học.
+    </footer>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: THÊM GIẢNG VIÊN MỚI -->
+<!-- ========================================== -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-person-plus-fill text-primary"></i>Thêm mới hồ sơ Giảng viên / Nhân sự</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="addEmployeeForm">
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Mã giảng viên <span class="text-danger">*</span></label>
+                            <input type="text" name="code" class="form-control" placeholder="VD: GV202601" required />
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label small fw-bold">Họ và tên <span class="text-danger">*</span></label>
+                            <input type="text" name="fullName" class="form-control" placeholder="VD: Nguyễn Văn Hoàng" required />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small fw-bold">Giới tính</label>
+                            <select name="gender" class="form-select">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Ngày sinh</label>
+                            <input type="date" name="dateOfBirth" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Email trường <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control" placeholder="tengv@donga.edu.vn" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Số điện thoại</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="VD: 0905123456" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label small fw-bold">Địa chỉ thường trú</label>
+                            <input type="text" name="address" class="form-control" placeholder="VD: 123 Điện Biên Phủ, Đà Nẵng" />
+                        </div>
+
+                        <div class="col-12"><hr class="my-1 text-muted" /></div>
+
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Khoa / Phòng ban <span class="text-danger">*</span></label>
+                            <select name="departmentId" id="addEmpDepartmentId" class="form-select" required>
+                                <option value="">Đang tải danh sách khoa...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Chức vụ ban đầu</label>
+                            <select name="positionId" id="addEmpPositionId" class="form-select">
+                                <option value="">Đang tải danh sách chức vụ...</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Học vị</label>
+                            <select name="academicDegree" class="form-select">
+                                <option value="Tiến sĩ">Tiến sĩ</option>
+                                <option value="Thạc sĩ" selected>Thạc sĩ</option>
+                                <option value="Cử nhân">Cử nhân</option>
+                                <option value="Kỹ sư">Kỹ sư</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Học hàm</label>
+                            <select name="academicTitle" class="form-select">
+                                <option value="">Không có</option>
+                                <option value="Giảng viên" selected>Giảng viên</option>
+                                <option value="Giảng viên chính">Giảng viên chính</option>
+                                <option value="Phó Giáo sư">Phó Giáo sư</option>
+                                <option value="Giáo sư">Giáo sư</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Chuyên ngành đào tạo</label>
+                            <input type="text" name="specialization" class="form-control" placeholder="VD: Kỹ thuật phần mềm" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Ngày vào làm</label>
+                            <input type="date" name="hireDate" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Loại hợp đồng</label>
+                            <select name="contractType" class="form-select">
+                                <option value="Cơ hữu" selected>Cơ hữu</option>
+                                <option value="Hợp đồng 3 năm">Hợp đồng 3 năm</option>
+                                <option value="Hợp đồng 1 năm">Hợp đồng 1 năm</option>
+                                <option value="Thỉnh giảng">Thỉnh giảng</option>
+                                <option value="Viên chức">Viên chức</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Hệ số lương</label>
+                            <input type="number" step="0.01" name="salaryCoefficient" class="form-control" value="2.34" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-primary px-4"><i class="bi bi-save me-1"></i>Lưu hồ sơ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: SỬA THÔNG TIN GIẢNG VIÊN -->
+<!-- ========================================== -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-pencil-square text-warning"></i>Chỉnh sửa hồ sơ Giảng viên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editEmployeeForm">
+                <input type="hidden" name="employeeId" />
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Mã giảng viên <span class="text-danger">*</span></label>
+                            <input type="text" name="code" class="form-control" required />
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label small fw-bold">Họ và tên <span class="text-danger">*</span></label>
+                            <input type="text" name="fullName" class="form-control" required />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small fw-bold">Giới tính</label>
+                            <select name="gender" class="form-select">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Ngày sinh</label>
+                            <input type="date" name="dateOfBirth" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Email <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Số điện thoại</label>
+                            <input type="tel" name="phone" class="form-control" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label small fw-bold">Địa chỉ</label>
+                            <input type="text" name="address" class="form-control" />
+                        </div>
+
+                        <div class="col-12"><hr class="my-1 text-muted" /></div>
+
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Khoa / Phòng ban</label>
+                            <select name="departmentId" id="editEmpDepartmentId" class="form-select">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Chức vụ chính</label>
+                            <select name="positionId" id="editEmpPositionId" class="form-select">
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Học vị</label>
+                            <select name="academicDegree" class="form-select">
+                                <option value="Tiến sĩ">Tiến sĩ</option>
+                                <option value="Thạc sĩ">Thạc sĩ</option>
+                                <option value="Cử nhân">Cử nhân</option>
+                                <option value="Kỹ sư">Kỹ sư</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Học hàm</label>
+                            <select name="academicTitle" class="form-select">
+                                <option value="">Không có</option>
+                                <option value="Giảng viên">Giảng viên</option>
+                                <option value="Giảng viên chính">Giảng viên chính</option>
+                                <option value="Phó Giáo sư">Phó Giáo sư</option>
+                                <option value="Giáo sư">Giáo sư</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Chuyên ngành</label>
+                            <input type="text" name="specialization" class="form-control" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Ngày vào làm</label>
+                            <input type="date" name="hireDate" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Loại hợp đồng</label>
+                            <select name="contractType" class="form-select">
+                                <option value="Cơ hữu">Cơ hữu</option>
+                                <option value="Hợp đồng 3 năm">Hợp đồng 3 năm</option>
+                                <option value="Hợp đồng 1 năm">Hợp đồng 1 năm</option>
+                                <option value="Thỉnh giảng">Thỉnh giảng</option>
+                                <option value="Viên chức">Viên chức</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Hệ số lương</label>
+                            <input type="number" step="0.01" name="salaryCoefficient" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-warning px-4 text-dark fw-bold"><i class="bi bi-check2-circle me-1"></i>Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: CHI TIẾT HỒ SƠ GIẢNG VIÊN -->
+<!-- ========================================== -->
+<div class="modal fade" id="detailEmployeeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-person-lines-fill text-primary"></i>Hồ sơ chi tiết Cán bộ / Giảng viên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Banner info -->
+                <div class="detail-banner">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div>
+                            <h3 class="fw-bold mb-1" id="detFullName">Nguyễn Văn Hoàng</h3>
+                            <div class="opacity-75 font-monospace">Mã hồ sơ: <span id="detCode">GV202601</span> &bull; <span id="detPosition">Trưởng khoa</span></div>
+                        </div>
+                        <div id="detStatus"></div>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <h6 class="fw-bold text-dark mb-3"><i class="bi bi-info-circle me-2 text-primary"></i>Thông tin nhân thân & Đơn vị</h6>
+                <div class="detail-info-grid mb-4">
+                    <div class="detail-item">
+                        <div class="label">Khoa / Viện</div>
+                        <div class="value" id="detDept">--</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Email liên hệ</div>
+                        <div class="value" id="detEmail">--</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Số điện thoại</div>
+                        <div class="value" id="detPhone">--</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Giới tính / Ngày sinh</div>
+                        <div class="value"><span id="detGender">--</span> &bull; <span id="detDob">--</span></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Địa chỉ thường trú</div>
+                        <div class="value" id="detAddress">--</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Học vị / Học hàm</div>
+                        <div class="value"><span id="detDegree">--</span> (<span id="detTitle">--</span>)</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Chuyên môn</div>
+                        <div class="value" id="detSpecialization">--</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Hợp đồng / Lương</div>
+                        <div class="value"><span id="detContract">--</span> &bull; Hệ số: <span id="detSalary">--</span></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="label">Ngày vào công tác</div>
+                        <div class="value" id="detHireDate">--</div>
+                    </div>
+                </div>
+
+                <!-- Assignment History -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="fw-bold text-dark mb-0"><i class="bi bi-clock-history me-2 text-purple"></i>Lịch sử Phân công Chức vụ & Quyết định</h6>
+                </div>
+                <div class="table-responsive border rounded-3">
+                    <table class="table table-sm table-hover align-middle mb-0">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Chức vụ</th>
+                            <th>Ngày bổ nhiệm</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Mô tả / Quyết định</th>
+                            <th class="text-end">Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody id="detHistoryTableBody">
+                        <tr>
+                            <td colspan="5" class="text-center py-3 text-muted">Đang tải lịch sử...</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: PHÂN CÔNG CHỨC VỤ MỚI -->
+<!-- ========================================== -->
+<div class="modal fade" id="assignPositionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-person-badge text-primary"></i>Phân công Chức vụ cho Giảng viên</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="assignPositionForm">
+                <input type="hidden" name="employeeId" />
+                <div class="modal-body">
+                    <div class="alert alert-info py-2 px-3 small mb-3">
+                        Giảng viên: <strong id="assignEmpName">Nguyễn Văn Hoàng</strong>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Chức vụ / Vị trí bổ nhiệm <span class="text-danger">*</span></label>
+                        <select name="positionId" id="assignPositionSelect" class="form-select" required>
+                            <option value="">-- Chọn Chức vụ --</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Thời điểm bắt đầu bổ nhiệm <span class="text-danger">*</span></label>
+                        <input type="datetime-local" name="startDate" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Mô tả nhiệm vụ / phân công</label>
+                        <input type="text" name="description" class="form-control" placeholder="VD: Bổ nhiệm giữ chức vụ Trưởng khoa CNTT nhiệm kỳ 2026-2030" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Số Quyết định / Ghi chú</label>
+                        <input type="text" name="note" class="form-control" placeholder="VD: Quyết định số 123/QĐ-ĐHA" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary px-4"><i class="bi bi-check-circle me-1"></i>Xác nhận phân công</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: THÊM KHOA / PHÒNG BAN -->
+<!-- ========================================== -->
+<div class="modal fade" id="addDeptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-building-add text-primary"></i>Thêm Khoa / Viện / Phòng ban</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="addDeptForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Mã Khoa / Đơn vị <span class="text-danger">*</span></label>
+                        <input type="text" name="code" class="form-control" placeholder="VD: CNTT, QTKD, YKHOA" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tên Khoa / Đơn vị <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control" placeholder="VD: Khoa Công nghệ Thông tin" required />
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Số điện thoại</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="02363123456" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Ngày thành lập</label>
+                            <input type="date" name="establishedDate" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Email liên hệ</label>
+                        <input type="email" name="email" class="form-control" placeholder="khoa@donga.edu.vn" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary px-4"><i class="bi bi-save me-1"></i>Lưu Khoa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: SỬA KHOA / PHÒNG BAN -->
+<!-- ========================================== -->
+<div class="modal fade" id="editDeptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-pencil-square text-warning"></i>Sửa Khoa / Phòng ban</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editDeptForm">
+                <input type="hidden" name="deptId" />
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Mã Khoa <span class="text-danger">*</span></label>
+                        <input type="text" name="code" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tên Khoa / Đơn vị <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control" required />
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Số điện thoại</label>
+                            <input type="tel" name="phone" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Ngày thành lập</label>
+                            <input type="date" name="establishedDate" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Email liên hệ</label>
+                        <input type="email" name="email" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-warning px-4 text-dark fw-bold">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: THÊM CHỨC VỤ MỚI -->
+<!-- ========================================== -->
+<div class="modal fade" id="addPositionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-award-fill text-warning"></i>Thêm Chức vụ / Vị trí công tác</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="addPositionForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Mã Chức vụ <span class="text-danger">*</span></label>
+                        <input type="text" name="code" class="form-control" placeholder="VD: TRUONG_KHOA, GV_COHUU" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tên Chức danh / Vị trí <span class="text-danger">*</span></label>
+                        <input type="text" name="title" class="form-control" placeholder="VD: Trưởng khoa, Giảng viên cơ hữu" required />
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Cấp bậc (Level)</label>
+                            <input type="number" name="level" class="form-control" value="1" min="1" max="10" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Trực thuộc Khoa (tùy chọn)</label>
+                            <select name="departmentId" id="addPosDepartmentId" class="form-select">
+                                <option value="">-- Toàn trường / Chung --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-warning px-4 text-dark fw-bold"><i class="bi bi-save me-1"></i>Lưu Chức vụ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL: SỬA CHỨC VỤ -->
+<!-- ========================================== -->
+<div class="modal fade" id="editPositionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-pencil-square text-warning"></i>Sửa Chức vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editPositionForm">
+                <input type="hidden" name="positionId" />
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Mã Chức vụ <span class="text-danger">*</span></label>
+                        <input type="text" name="code" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tên Chức vụ <span class="text-danger">*</span></label>
+                        <input type="text" name="title" class="form-control" required />
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Cấp bậc (Level)</label>
+                            <input type="number" name="level" class="form-control" min="1" max="10" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Trực thuộc Khoa</label>
+                            <select name="departmentId" id="editPosDepartmentId" class="form-select">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-warning px-4 text-dark fw-bold">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<!-- Bootstrap 5 & AdminLTE 4 Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/adminlte/js/adminlte.js"></script>
+<script type="module" src="/n3/js/staff.js"></script>
+</body>
+</html>
