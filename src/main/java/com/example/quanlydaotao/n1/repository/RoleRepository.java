@@ -1,6 +1,6 @@
-package n1.repository;
+package com.example.quanlydaotao.n1.repository;
 
-import n1.entity.Role;
+import com.example.quanlydaotao.n1.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

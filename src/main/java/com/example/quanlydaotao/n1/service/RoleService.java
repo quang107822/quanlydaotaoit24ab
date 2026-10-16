@@ -1,6 +1,6 @@
-package n1.service;
+package com.example.quanlydaotao.n1.service;
 
-import n1.entity.Role;
+import com.example.quanlydaotao.n1.entity.Role;
 
 import java.util.List;
 import java.util.UUID;

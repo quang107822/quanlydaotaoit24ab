@@ -1,4 +1,4 @@
-package n1.dto;
+package com.example.quanlydaotao.n1.dto;
 
 public class RoleRequest {
 

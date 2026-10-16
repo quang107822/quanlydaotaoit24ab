@@ -1,7 +1,7 @@
-package n1.controller;
+package com.example.quanlydaotao.n1.controller;
 
-import n1.entity.User;
-import n1.service.UserService;
+import com.example.quanlydaotao.n1.entity.User;
+import com.example.quanlydaotao.n1.service.UserService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

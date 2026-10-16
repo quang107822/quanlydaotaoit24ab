@@ -1,5 +1,5 @@
 
-package n1.dto;
+package com.example.quanlydaotao.n1.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

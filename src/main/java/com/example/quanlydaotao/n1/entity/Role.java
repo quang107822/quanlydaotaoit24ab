@@ -1,4 +1,4 @@
-package n1.entity;
+package com.example.quanlydaotao.n1.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

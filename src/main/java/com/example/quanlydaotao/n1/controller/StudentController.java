@@ -1,4 +1,4 @@
-package n1.controller;
+package com.example.quanlydaotao.n1.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import n1.entity.Student;
-import n1.service.StudentService;
+import com.example.quanlydaotao.n1.entity.Student;
+import com.example.quanlydaotao.n1.service.StudentService;
 
 @RestController
 @RequestMapping("/api/students")

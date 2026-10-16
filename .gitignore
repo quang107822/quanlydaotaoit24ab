@@ -1,5 +1,7 @@
 .aider*
-target/
-*.class
 .idea/
+*.iml
+target/
+build/
+*.class
 /quanlydaotao.iml

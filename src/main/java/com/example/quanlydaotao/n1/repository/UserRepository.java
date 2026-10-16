@@ -1,6 +1,6 @@
-package n1.repository;
+package com.example.quanlydaotao.n1.repository;
 
-import n1.entity.User;
+import com.example.quanlydaotao.n1.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

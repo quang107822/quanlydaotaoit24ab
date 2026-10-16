@@ -1,7 +1,7 @@
-package n1.controller;
+package com.example.quanlydaotao.n1.controller;
 
-import n1.entity.Role;
-import n1.service.RoleService;
+import com.example.quanlydaotao.n1.entity.Role;
+import com.example.quanlydaotao.n1.service.RoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
