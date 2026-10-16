@@ -3,7 +3,9 @@ package com.example.quanlydaotao.n1.controller;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,43 +21,63 @@ import com.example.quanlydaotao.n1.service.StudentService;
 
 @RestController
 @RequestMapping("/api/students")
+@CrossOrigin("*")
 public class StudentController {
 
-    @Autowired
-    private StudentService studentService;
+    private final StudentService studentService;
 
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    // GET ALL / SEARCH
     @GetMapping
-    public List<Student> listStudents(
+    public ResponseEntity<List<Student>> listStudents(
             @RequestParam(required = false) String keyword) {
 
-        return studentService.search(keyword);
+        return ResponseEntity.ok(
+                studentService.search(keyword)
+        );
     }
 
+    // GET BY ID
     @GetMapping("/{id}")
-    public Student getStudent(@PathVariable UUID id) {
+    public ResponseEntity<Student> getStudent(
+            @PathVariable UUID id) {
 
-        return studentService.getById(id);
+        return ResponseEntity.ok(
+                studentService.getById(id)
+        );
     }
 
+    // CREATE
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(
+            @RequestBody Student student) {
 
-        return studentService.save(student);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(studentService.create(student));
     }
 
+    // UPDATE
     @PutMapping("/{id}")
-    public Student updateStudent(
+    public ResponseEntity<Student> updateStudent(
             @PathVariable UUID id,
             @RequestBody Student student) {
 
-        student.setId(id);
-
-        return studentService.save(student);
+        return ResponseEntity.ok(
+                studentService.update(id, student)
+        );
     }
 
+    // DELETE
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable UUID id) {
+    public ResponseEntity<String> deleteStudent(
+            @PathVariable UUID id) {
 
         studentService.delete(id);
+
+        return ResponseEntity.ok("Xóa sinh viên thành công");
     }
 }
