@@ -1,4 +1,4 @@
-package com.example.quanlydaotao.entity;
+package n1.entity;
 
 import jakarta.persistence.*;
 

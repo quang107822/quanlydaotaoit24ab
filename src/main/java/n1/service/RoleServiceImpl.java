@@ -1,7 +1,7 @@
-package com.example.quanlydaotao.service;
+package n1.service;
 
-import com.example.quanlydaotao.entity.Role;
-import com.example.quanlydaotao.repository.RoleRepository;
+import n1.entity.Role;
+import n1.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

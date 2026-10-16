@@ -1,7 +1,7 @@
-package com.example.quanlydaotao.service;
+package n1.service;
 
-import com.example.quanlydaotao.entity.User;
-import com.example.quanlydaotao.repository.UserRepository;
+import n1.entity.User;
+import n1.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
