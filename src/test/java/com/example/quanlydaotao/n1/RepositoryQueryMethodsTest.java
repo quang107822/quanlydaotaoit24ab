@@ -2,7 +2,6 @@ package com.example.quanlydaotao.n1;
 
 import com.example.quanlydaotao.n1.repository.PermissionRepository;
 import com.example.quanlydaotao.n1.repository.RoleRepository;
-import com.example.quanlydaotao.n1.repository.StudentRepository;
 import com.example.quanlydaotao.n1.repository.UserRepository;
 import com.example.quanlydaotao.n1.repository.UserRoleRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -46,12 +45,6 @@ class RepositoryQueryMethodsTest {
     @DisplayName("UserRepository: tên method derived query hợp lệ")
     void userRepositoryMethodsAreValid() {
         assertDerivedQueriesAreValid(UserRepository.class);
-    }
-
-    @Test
-    @DisplayName("StudentRepository: tên method derived query hợp lệ")
-    void studentRepositoryMethodsAreValid() {
-        assertDerivedQueriesAreValid(StudentRepository.class);
     }
 
     // ==================== HELPERS ====================

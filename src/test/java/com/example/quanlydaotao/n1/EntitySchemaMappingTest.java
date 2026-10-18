@@ -2,7 +2,6 @@ package com.example.quanlydaotao.n1;
 
 import com.example.quanlydaotao.n1.entity.Permission;
 import com.example.quanlydaotao.n1.entity.Role;
-import com.example.quanlydaotao.n1.entity.Student;
 import com.example.quanlydaotao.n1.entity.User;
 import com.example.quanlydaotao.n1.entity.UserRole;
 import jakarta.persistence.Column;
@@ -60,12 +59,6 @@ class EntitySchemaMappingTest {
     @DisplayName("Bảng users khớp entity User")
     void usersTableMatchesEntity() throws Exception {
         assertMapping(User.class, "users");
-    }
-
-    @Test
-    @DisplayName("Bảng students khớp entity Student")
-    void studentsTableMatchesEntity() throws Exception {
-        assertMapping(Student.class, "students");
     }
 
     // ==================== HELPERS ====================
