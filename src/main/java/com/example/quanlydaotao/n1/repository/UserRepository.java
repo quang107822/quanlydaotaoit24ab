@@ -1,6 +1,8 @@
 package com.example.quanlydaotao.n1.repository;
 
 import com.example.quanlydaotao.n1.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,6 +29,14 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     List<User> findByDeletedAtIsNull();
 
+    List<User> findByDeletedAtIsNullAndIsActive(Boolean isActive);
+
+    List<User> findByDeletedAtIsNotNull();
+
+    Page<User> findByDeletedAtIsNull(Pageable pageable);
+
+    Page<User> findByDeletedAtIsNullAndIsActive(Boolean isActive, Pageable pageable);
+
     @Query("""
             select u from User u
             where u.deletedAt is null
@@ -34,6 +44,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
                 lower(u.username) like lower(concat('%', :keyword, '%'))
                 or lower(u.fullName) like lower(concat('%', :keyword, '%'))
                 or lower(u.email) like lower(concat('%', :keyword, '%'))
+                or lower(u.phone) like lower(concat('%', :keyword, '%'))
               )
             """)
     List<User> searchActiveUsers(@Param("keyword") String keyword);
