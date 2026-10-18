@@ -2,6 +2,10 @@ package com.example.quanlydaotao.n1.service;
 
 import com.example.quanlydaotao.n1.entity.User;
 import com.example.quanlydaotao.n1.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,6 +30,32 @@ public class UserService {
      */
     public List<User> getAllUsers() {
         return userRepository.findByDeletedAtIsNull();
+    }
+
+    /** Lọc user chưa xóa mềm; active null nghĩa là lấy cả user hoạt động và bị khóa. */
+    public List<User> getUsers(Boolean active) {
+        return active == null
+                ? getAllUsers()
+                : userRepository.findByDeletedAtIsNullAndIsActive(active);
+    }
+
+    /** Lấy riêng các bản ghi đã được đánh dấu xóa mềm để phục vụ khôi phục. */
+    public List<User> getDeletedUsers() {
+        return userRepository.findByDeletedAtIsNotNull();
+    }
+
+    /** Phân trang user chưa xóa mềm, sắp xếp mới tạo trước và giới hạn page size tối đa 100. */
+    public Page<User> getUsersPage(int page, int size, Boolean active) {
+        if (page < 0 || size < 1 || size > 100) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "page phải >= 0 và size phải từ 1 đến 100");
+        }
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+        return active == null
+                ? userRepository.findByDeletedAtIsNull(pageable)
+                : userRepository.findByDeletedAtIsNullAndIsActive(active, pageable);
     }
 
     /**
@@ -191,16 +221,51 @@ public class UserService {
      *
      * @param id ID người dùng cần xóa mềm
      */
-    public void deleteUser(UUID id) {
+    /** Xóa mềm user, lưu thời điểm/người xóa và khóa tài khoản. */
+    public void deleteUser(UUID id, UUID deletedBy) {
 
         User user = getUserById(id);
         LocalDateTime deletedAt = LocalDateTime.now();
 
         user.setDeletedAt(deletedAt);
+        user.setDeletedBy(deletedBy);
         user.setUpdatedAt(deletedAt);
         user.setIsActive(false);
 
         userRepository.save(user);
+    }
+
+    /** Khôi phục user đã xóa; xóa dấu xóa và bật lại trạng thái hoạt động. */
+    public User restoreUser(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Không tìm thấy user: " + id));
+        if (user.getDeletedAt() == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "User chưa bị xóa");
+        }
+
+        user.setDeletedAt(null);
+        user.setDeletedBy(null);
+        user.setIsActive(true);
+        user.setUpdatedAt(LocalDateTime.now());
+        return userRepository.save(user);
+    }
+
+    /** Cập nhật chuỗi passwordHash đã được mã hóa; service không tự mã hóa mật khẩu. */
+    public User updatePasswordHash(UUID id, String passwordHash) {
+        if (passwordHash == null || passwordHash.isBlank() || passwordHash.length() > 255) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "passwordHash phải có độ dài từ 1 đến 255 ký tự");
+        }
+
+        User user = getUserById(id);
+        user.setPasswordHash(passwordHash);
+        user.setUpdatedAt(LocalDateTime.now());
+        return userRepository.save(user);
     }
 
     /**
