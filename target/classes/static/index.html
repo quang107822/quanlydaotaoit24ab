@@ -3,263 +3,222 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title id="pageTitle">
-        Quản lý sinh viên | AdminLTE 4
-    </title>
+    <title>Quản lý đào tạo | School Manager</title>
     <meta name="color-scheme" content="light dark" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="/adminlte/css/adminlte.css" />
     <link rel="stylesheet" href="/assets/css/student.css" />
 </head>
-
 <body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
 <div class="app-wrapper">
     <nav class="app-header navbar navbar-expand bg-body">
         <div class="container-fluid">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
-                        <i class="bi bi-list"></i>
-                    </a>
-                </li>
-                <li class="nav-item d-none d-md-block">
-                    <span class="nav-link fw-semibold">
-                        Quản lý đào tạo
-                    </span>
-                </li>
+                <li class="nav-item"><a class="nav-link" data-lte-toggle="sidebar" href="#" role="button" aria-label="Thu gọn menu"><i class="bi bi-list"></i></a></li>
+                <li class="nav-item d-none d-md-block"><span class="nav-link fw-semibold">Quản lý đào tạo</span></li>
+            </ul>
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item me-2"><span class="system-context"><i class="bi bi-building"></i> Hệ thống quản lý đào tạo</span></li>
+                <li class="nav-item"><button class="btn btn-light btn-sm rounded-circle" aria-label="Thông báo"><i class="bi bi-bell"></i></button></li>
+                <li class="nav-item ms-3"><div class="profile-chip"><span class="profile-avatar">AD</span><span class="d-none d-md-inline">Quản trị viên</span><i class="bi bi-chevron-down small"></i></div></li>
             </ul>
         </div>
     </nav>
-    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-        <div class="sidebar-brand">
-            <a href="index.html" class="brand-link">
-                <img src="/adminlte/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
-                <span class="brand-text fw-light">
-                    School Manager
-                </span>
-            </a>
-        </div>
 
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <div class="sidebar-brand"><a href="#overview" class="brand-link" data-screen="overview">
+            <img src="/adminlte/assets/img/AdminLTELogo.png" alt="" class="brand-image opacity-75 shadow" />
+            <span class="brand-text fw-light">School Manager</span>
+        </a></div>
         <div class="sidebar-wrapper">
             <nav class="mt-2">
-                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">
-                            <i class="nav-icon bi bi-people-fill"></i>
-                            <p>
-                                Sinh viên
-                            </p>
-                        </a>
-                    </li>
+                <ul class="nav sidebar-menu flex-column" role="navigation" data-accordion="false">
+                    <li class="nav-header">KHÔNG GIAN LÀM VIỆC</li>
+                    <li class="nav-item"><a href="#overview" class="nav-link" data-screen="overview"><i class="nav-icon bi bi-grid-1x2"></i><p>Tổng quan</p></a></li>
+                    <li class="nav-header">QUẢN LÝ ĐÀO TẠO</li>
+                    <li class="nav-item"><a href="#periods" class="nav-link" data-screen="periods"><i class="nav-icon bi bi-calendar2-week"></i><p>Đợt đăng ký</p></a></li>
+                    <li class="nav-item"><a href="#courses" class="nav-link" data-screen="courses"><i class="nav-icon bi bi-journal-bookmark"></i><p>Môn học</p></a></li>
+                    <li class="nav-item"><a href="#sections" class="nav-link active" data-screen="sections"><i class="nav-icon bi bi-collection"></i><p>Lớp học phần</p></a></li>
+                    <li class="nav-item"><a href="#equivalents" class="nav-link" data-screen="equivalents"><i class="nav-icon bi bi-arrow-left-right"></i><p>Môn tương đương</p></a></li>
+                    <li class="nav-item"><a href="#eligible-students" class="nav-link" data-screen="eligible-students"><i class="nav-icon bi bi-person-check"></i><p>Sinh viên đủ điều kiện</p></a></li>
+                    <li class="nav-item"><a href="#advisors" class="nav-link" data-screen="advisors"><i class="nav-icon bi bi-person-gear"></i><p>Cố vấn &amp; phụ trách</p></a></li>
+                    <li class="nav-header">PHÂN TÍCH</li>
+                    <li class="nav-item"><a href="#reports" class="nav-link" data-screen="reports"><i class="nav-icon bi bi-bar-chart-line"></i><p>Báo cáo</p></a></li>
                 </ul>
             </nav>
         </div>
     </aside>
 
     <main class="app-main">
-        <div id="page-list">
-            <!-- Page Header -->
-            <div class="app-content-header">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0">
-                                Quản lý sinh viên
-                            </h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        Trang chủ
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Sinh viên
-                                </li>
-                            </ol>
-                        </div>
+        <div class="app-content">
+            <div class="container-fluid">
+                <section id="screen-overview" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Trang chủ <i class="bi bi-chevron-right"></i> Tổng quan</div><h1>Tổng quan đào tạo</h1><p>Theo dõi hoạt động học vụ và truy cập nhanh các nghiệp vụ đào tạo.</p></div><span class="period-chip"><i class="bi bi-calendar3"></i> HK1 · Năm 2026</span></div>
+                    <div class="welcome-panel mb-3"><div><span class="welcome-eyebrow">TRUNG TÂM ĐÀO TẠO</span><h2>Không gian quản lý học vụ</h2><p>Chọn một nghiệp vụ để xem và xử lý công việc.</p></div><div class="welcome-period"><i class="bi bi-calendar-check"></i><span>Đợt đang mở</span><strong id="overviewActivePeriod">—</strong><small id="overviewActivePeriodDates">Dữ liệu từ API</small></div></div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-primary"><div><span class="summary-label">Lớp học phần</span><strong id="overviewTotal">0</strong><small>Theo bộ lọc API hiện tại</small></div><span class="summary-icon"><i class="bi bi-collection"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-success"><div><span class="summary-label">Đợt đăng ký đang mở</span><strong id="overviewOpenPeriods">—</strong><small>Theo dữ liệu API</small></div><span class="summary-icon"><i class="bi bi-calendar-check"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-warning"><div><span class="summary-label">Sinh viên đủ điều kiện</span><strong id="overviewEligible">—</strong><small>Theo đợt đang chọn</small></div><span class="summary-icon"><i class="bi bi-person-check"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-danger"><div><span class="summary-label">Lớp đã đầy</span><strong id="overviewFull">0</strong><small>Trên trang đang xem</small></div><span class="summary-icon"><i class="bi bi-people-fill"></i></span></div></div>
                     </div>
-                </div>
-            </div>
-            <!-- Content -->
-            <div class="app-content">
-                <div class="container-fluid">
-                    <div class="card shadow-sm border-0">
-                        <!-- Card Header -->
-                        <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2">
-                            <h3 class="card-title mb-0">
-                                Danh sách sinh viên
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                <!-- Search -->
-                                <form id="searchForm" class="d-flex gap-2 align-items-center">
-                                    <div class="input-group input-group-sm" style="width: 320px;">
-                                        <span class="input-group-text">
-                                            <i class="bi bi-search"></i>
-                                        </span>
-                                        <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Tìm theo mã / họ tên / email..." />
-                                    </div>
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="bi bi-funnel me-1"></i>
-                                        Tìm kiếm
-                                    </button>
-                                </form>
-                                <!-- Create -->
-                                <a class="btn btn-primary btn-sm" href="index.html?page=form">
-                                    <i class="bi bi-plus-circle me-1"></i>
-                                    Thêm sinh viên
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Table -->
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle mb-0">
-                                    <thead class="table-light">
-                                    <tr>
-                                        <th style="width: 18%;">
-                                            Mã sinh viên
-                                        </th>
-                                        <th style="width: 24%;">
-                                            Họ và tên
-                                        </th>
-                                        <th style="width: 22%;">
-                                            Email
-                                        </th>
-                                        <th style="width: 16%;">
-                                            Số điện thoại
-                                        </th>
-                                        <th style="width: 12%;">
-                                            Lớp
-                                        </th>
-                                        <th style="width: 8%;" class="text-end">
-                                            Hành động
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="studentTableBody">
-                                    <tr>
-                                        <td colspan="6" class="text-center text-muted py-4">
-                                            Đang tải dữ liệu...
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="row g-3">
+                        <div class="col-xl-8"><div class="card workflow-card h-100"><div class="card-header"><div><h3 class="card-title">Nghiệp vụ đào tạo</h3><small class="text-body-secondary">Mỗi nhóm công việc được tách thành màn hình riêng</small></div></div><div class="card-body"><div class="workflow-grid">
+                            <button class="workflow-link" data-go-screen="periods"><span class="workflow-icon bg-blue"><i class="bi bi-calendar2-week"></i></span><span><strong>Đợt đăng ký</strong><small>Cấu hình thời gian và hạn mức</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                            <button class="workflow-link" data-go-screen="courses"><span class="workflow-icon bg-purple"><i class="bi bi-journal-bookmark"></i></span><span><strong>Môn học</strong><small>Tra cứu danh mục môn gốc</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                            <button class="workflow-link" data-go-screen="sections"><span class="workflow-icon bg-green"><i class="bi bi-collection"></i></span><span><strong>Lớp học phần</strong><small>Mở lớp và theo dõi sĩ số</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                            <button class="workflow-link" data-go-screen="eligible-students"><span class="workflow-icon bg-orange"><i class="bi bi-person-check"></i></span><span><strong>Sinh viên đủ điều kiện</strong><small>Quyền tham gia theo từng đợt</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                            <button class="workflow-link" data-go-screen="equivalents"><span class="workflow-icon bg-blue"><i class="bi bi-arrow-left-right"></i></span><span><strong>Môn tương đương</strong><small>Quản lý môn cũ và môn thay thế</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                            <button class="workflow-link" data-go-screen="reports"><span class="workflow-icon bg-green"><i class="bi bi-bar-chart-line"></i></span><span><strong>Báo cáo</strong><small>Tổng hợp ghi danh và sĩ số</small></span><i class="bi bi-arrow-up-right ms-auto"></i></button>
+                        </div></div></div></div>
+                        <div class="col-xl-4"><div class="card workflow-card h-100"><div class="card-header"><div><h3 class="card-title">Quy trình đăng ký học lại</h3><small class="text-body-secondary">Trình tự xử lý thường dùng</small></div></div><div class="card-body"><ol class="process-list"><li><span>1</span><div><strong>Cấu hình đợt</strong><small>Thời gian, tín chỉ, trạng thái</small></div></li><li><span>2</span><div><strong>Cấp quyền sinh viên</strong><small>Thêm hoặc import danh sách</small></div></li><li><span>3</span><div><strong>Mở lớp học phần</strong><small>Chọn môn và chỉ tiêu</small></div></li><li><span>4</span><div><strong>Theo dõi &amp; báo cáo</strong><small>Ghi danh, học phí, sĩ số</small></div></li></ol></div></div></div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
 
-        <div id="page-form" style="display: none;">
-            <!-- Page Header -->
-            <div class="app-content-header">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <h3 class="mb-0" id="pageHeading">
-                                Thêm sinh viên
-                            </h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-end mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        Danh sách
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page" id="breadcrumbTitle">
-                                    Thêm
-                                </li>
-                            </ol>
-                        </div>
+                <section id="screen-sections" class="module-screen active">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Lớp học phần</div><h1>Quản lý lớp học phần</h1><p>Mở lớp cho môn học, theo dõi chỉ tiêu và danh sách sinh viên ghi danh.</p></div><button class="btn btn-primary" type="button" id="addSectionButton"><i class="bi bi-plus-lg me-1"></i>Mở lớp học phần</button></div>
+                    <div class="row g-3 mb-3" id="summaryCards">
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-primary"><div><span class="summary-label">Tổng số lớp</span><strong id="totalSections">0</strong><small>Tổng theo bộ lọc API</small></div><span class="summary-icon"><i class="bi bi-collection"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-success"><div><span class="summary-label">Đang mở</span><strong id="openSections">0</strong><small>Trên trang hiện tại</small></div><span class="summary-icon"><i class="bi bi-door-open"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-warning"><div><span class="summary-label">Đã đầy sĩ số</span><strong id="fullSections">0</strong><small>Trên trang hiện tại</small></div><span class="summary-icon"><i class="bi bi-people-fill"></i></span></div></div>
+                        <div class="col-6 col-xl-3"><div class="summary-card summary-card-danger"><div><span class="summary-label">Đã khóa / hủy</span><strong id="closedSections">0</strong><small>Trên trang hiện tại</small></div><span class="summary-icon"><i class="bi bi-lock"></i></span></div></div>
                     </div>
-                </div>
-            </div>
-            <!-- Content -->
-            <div class="app-content">
-                <div class="container-fluid">
-                    <div class="card form-card shadow-sm border-0">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0" id="formTitle">
-                                Thêm sinh viên mới
-                            </h3>
+                    <div class="card workflow-card">
+                        <div class="card-header section-toolbar"><div><h3 class="card-title mb-1">Danh sách lớp học phần</h3><small class="text-body-secondary">Tìm kiếm, theo dõi sĩ số và quản lý trạng thái lớp</small></div>
+                            <div class="toolbar-controls"><div class="input-group section-search"><span class="input-group-text"><i class="bi bi-search"></i></span><input type="search" id="keyword" class="form-control" placeholder="Tìm mã lớp, tên môn..." /><button type="button" class="btn btn-outline-secondary" id="clearSearchButton" aria-label="Xóa tìm kiếm"><i class="bi bi-x-lg"></i></button></div>
+                                <select id="semesterFilter" class="form-select" aria-label="Lọc theo học kỳ"><option value="">Tất cả học kỳ</option></select>
+                                <select id="statusFilter" class="form-select" aria-label="Lọc theo trạng thái"><option value="">Tất cả trạng thái</option><option value="1">Đang mở</option><option value="3">Đã khóa</option><option value="2">Đã hủy</option></select>
+                                <button class="btn btn-outline-success text-nowrap" type="button" id="exportButton"><i class="bi bi-file-earmark-spreadsheet me-1"></i>Xuất danh sách</button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <form id="studentForm">
-                                <!-- Student Code -->
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            Mã sinh viên
-                                        </label>
-                                        <input type="text" id="studentCode" name="studentCode" class="form-control" />
-                                    </div>
-                                    <!-- Full Name -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            Họ và tên
-                                        </label>
-                                        <input type="text" id="fullName" name="fullName" class="form-control" />
-                                    </div>
-                                    <!-- Email -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            Email
-                                        </label>
-                                        <input type="email" id="email" name="email" class="form-control" />
-                                    </div>
-                                    <!-- Phone -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            Số điện thoại
-                                        </label>
-                                        <input type="text" id="phone" name="phone" class="form-control" />
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">
-                                            Lớp
-                                        </label>
-                                        <input type="text" id="className" name="className" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="mt-4 d-flex gap-2">
-                                    <button id="submitButton" type="submit" class="btn btn-primary">
-                                        <i class="bi bi-plus-circle me-1"></i>
-                                        Thêm sinh viên
-                                    </button>
-                                    <a href="index.html" class="btn btn-secondary">
-                                        <i class="bi bi-arrow-left me-1"></i>
-                                        Quay lại
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
+                        <div class="table-responsive"><table class="table table-hover align-middle mb-0 section-table"><thead><tr><th>STT</th><th>Mã lớp HP</th><th>Tên môn học</th><th class="text-center">Tín chỉ</th><th style="min-width:190px">Tỷ lệ ghi danh</th><th>Trạng thái</th><th class="text-end">Thao tác</th></tr></thead><tbody id="courseTableBody"><tr><td colspan="7" class="text-center text-muted py-4">Đang tải dữ liệu từ API...</td></tr></tbody></table></div>
+                        <div class="table-footer"><small id="paginationSummary"></small><div class="btn-group btn-group-sm" role="group" aria-label="Phân trang"><button id="previousPage" type="button" class="btn btn-outline-secondary"><i class="bi bi-chevron-left me-1"></i>Trước</button><button id="nextPage" type="button" class="btn btn-outline-secondary">Sau<i class="bi bi-chevron-right ms-1"></i></button></div></div>
                     </div>
-                </div>
+                </section>
+
+                <section id="screen-periods" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Đợt đăng ký</div><h1>Quản lý đợt đăng ký</h1><p>Thiết lập thời gian, giới hạn tín chỉ và trạng thái cổng đăng ký.</p></div><button class="btn btn-primary" data-demo-action="period-create"><i class="bi bi-plus-lg me-1"></i>Tạo đợt đăng ký</button></div>
+                    <div class="row g-3 mb-3"><div class="col-sm-4"><div class="mini-stat"><span>Tổng số đợt</span><strong>3</strong></div></div><div class="col-sm-4"><div class="mini-stat"><span>Đang mở</span><strong class="text-success">1</strong></div></div><div class="col-sm-4"><div class="mini-stat"><span>Sắp diễn ra</span><strong class="text-primary">1</strong></div></div></div>
+                    <div class="card workflow-card"><div class="card-header list-toolbar"><div><h3 class="card-title">Danh sách đợt</h3><small class="text-body-secondary">Các đợt đăng ký học lại và cải thiện</small></div><select class="form-select form-select-sm"><option>Tất cả học kỳ</option><option>HK1 · 2026</option><option>HK2 · 2025</option></select></div><div class="table-responsive"><table class="table module-table mb-0"><thead><tr><th>Tên đợt</th><th>Học kỳ</th><th>Thời gian đăng ký</th><th>Giới hạn tín chỉ</th><th>Loại đăng ký</th><th>Trạng thái</th><th></th></tr></thead><tbody><tr><td><strong>Đợt học lại HK1</strong><small>Đăng ký học lại và cải thiện</small></td><td>HK1 · 2026</td><td>01/10/2026 – 30/10/2026</td><td>12 – 25 tín chỉ</td><td><span class="soft-tag">Học lại, cải thiện</span></td><td><span class="status-badge status-open"><span></span>Đang mở</span></td><td><button class="btn btn-sm btn-light" data-demo-action="period-edit">Chi tiết</button></td></tr><tr><td><strong>Đợt bổ sung HK2</strong><small>Đăng ký bổ sung sau phân lớp</small></td><td>HK2 · 2025</td><td>05/01/2026 – 15/01/2026</td><td>0 – 18 tín chỉ</td><td><span class="soft-tag">Học lại</span></td><td><span class="status-badge status-locked"><span></span>Đã đóng</span></td><td><button class="btn btn-sm btn-light" data-demo-action="period-edit">Chi tiết</button></td></tr><tr><td><strong>Đợt học cải thiện hè</strong><small>Dành cho sinh viên nâng điểm</small></td><td>Hè · 2025</td><td>10/06/2025 – 25/06/2025</td><td>0 – 12 tín chỉ</td><td><span class="soft-tag">Cải thiện</span></td><td><span class="status-badge status-cancelled"><span></span>Đã kết thúc</span></td><td><button class="btn btn-sm btn-light" data-demo-action="period-edit">Chi tiết</button></td></tr></tbody></table></div></div>
+                </section>
+
+                <section id="screen-courses" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Môn học</div><h1>Danh mục môn học</h1><p>Tra cứu môn học gốc và thông tin tín chỉ.</p></div></div>
+                    <div class="card workflow-card"><div class="card-header list-toolbar"><div><h3 class="card-title">Danh sách môn học</h3><small class="text-body-secondary">Danh mục môn gốc lấy từ API tra cứu</small></div><div class="input-group input-group-sm list-search"><span class="input-group-text"><i class="bi bi-search"></i></span><input class="form-control" placeholder="Tìm mã hoặc tên môn..." /></div></div><div class="table-responsive"><table class="table module-table mb-0"><thead><tr><th>Mã môn</th><th>Tên môn học</th><th>Tín chỉ</th></tr></thead><tbody id="courseCatalogBody"></tbody></table></div></div>
+                </section>
+
+                <section id="screen-equivalents" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Môn tương đương</div><h1>Quy tắc môn học tương đương</h1><p>Tra cứu môn cũ và môn thay thế áp dụng cho sinh viên học lại.</p></div><button class="btn btn-primary" data-demo-action="equivalent-create"><i class="bi bi-plus-lg me-1"></i>Thêm quy tắc</button></div>
+                    <div class="callout-note mb-3"><i class="bi bi-info-circle"></i><span>Quy tắc tương đương được dùng khi chương trình đào tạo thay đổi mã hoặc nội dung môn học.</span></div>
+                    <div class="card workflow-card"><div class="card-header list-toolbar"><div><h3 class="card-title">Danh sách quy tắc</h3><small class="text-body-secondary">Quan hệ môn học được lưu trong hệ thống</small></div><select class="form-select form-select-sm" disabled><option>Tất cả loại tương đương</option></select></div><div class="table-responsive"><table class="table module-table mb-0"><thead><tr><th>Môn học cũ</th><th></th><th>Môn học thay thế</th><th>Loại quy tắc</th><th>Hiệu lực</th><th></th></tr></thead><tbody><tr><td colspan="6" class="text-center text-body-secondary py-4">Đang tải dữ liệu từ API...</td></tr></tbody></table></div></div>
+                </section>
+
+                <section id="screen-eligible-students" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Sinh viên đủ điều kiện</div><h1>Danh sách sinh viên tham gia</h1><p>Quản lý quyền đăng ký và hạn mức tín chỉ theo từng đợt.</p></div><div class="d-flex gap-2"><button class="btn btn-outline-primary" data-demo-action="student-import"><i class="bi bi-upload me-1"></i>Import Excel</button><button class="btn btn-primary" data-demo-action="student-add"><i class="bi bi-person-plus me-1"></i>Thêm sinh viên</button></div></div>
+                    <div class="eligibility-context mb-3"><div><i class="bi bi-calendar-event"></i><span>Đợt đang chọn</span><strong>Đợt học lại HK1 · HK1 2026</strong></div><div><i class="bi bi-people"></i><span>Sinh viên được cấp quyền</span><strong>248 sinh viên</strong></div><button class="btn btn-sm btn-outline-primary ms-auto" data-demo-action="period-select">Đổi đợt</button></div>
+                    <div class="card workflow-card"><div class="card-header list-toolbar"><div><h3 class="card-title">Sinh viên trong đợt</h3><small class="text-body-secondary">Hạn mức riêng để trống nghĩa là dùng giới hạn chung của đợt</small></div><div class="input-group input-group-sm list-search"><span class="input-group-text"><i class="bi bi-search"></i></span><input class="form-control" placeholder="Tìm mã SV hoặc họ tên..." /></div></div><div class="table-responsive"><table class="table module-table mb-0"><thead><tr><th>Mã sinh viên</th><th>Họ và tên</th><th>Hạn mức tín chỉ</th><th>Trạng thái</th><th></th></tr></thead><tbody><tr><td colspan="5" class="text-center text-body-secondary py-4">Đang tải dữ liệu từ API...</td></tr></tbody></table></div><div class="table-footer"><span id="eligibleCount">—</span></div></div>
+                </section>
+
+                <section id="screen-advisors" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Phân công</div><h1>Cố vấn &amp; cán bộ phụ trách</h1><p>Quản lý cố vấn học tập và cán bộ hỗ trợ theo sinh viên.</p></div><button class="btn btn-primary" data-demo-action="advisor-assign"><i class="bi bi-person-plus me-1"></i>Phân công</button></div>
+                    <div class="callout-note mb-3"><i class="bi bi-shield-check"></i><span>Mỗi sinh viên có tối đa một cố vấn chính; cán bộ hỗ trợ có thể được phân công theo nhu cầu.</span></div>
+                    <div class="card workflow-card"><div class="card-header list-toolbar"><div><h3 class="card-title">Danh sách phân công</h3><small class="text-body-secondary">Dữ liệu phân công lấy từ API</small></div><div class="input-group input-group-sm list-search"><span class="input-group-text"><i class="bi bi-search"></i></span><input class="form-control" placeholder="Tìm sinh viên hoặc cố vấn..." /></div></div><div class="table-responsive"><table class="table module-table mb-0"><thead><tr><th>Sinh viên</th><th>Người phụ trách</th><th>Vai trò</th><th>Cố vấn chính</th><th></th></tr></thead><tbody><tr><td colspan="5" class="text-center text-body-secondary py-4">Đang tải dữ liệu từ API...</td></tr></tbody></table></div></div>
+                </section>
+
+                <section id="screen-reports" class="module-screen">
+                    <div class="screen-heading"><div><div class="breadcrumb-line">Đào tạo <i class="bi bi-chevron-right"></i> Báo cáo</div><h1>Báo cáo đào tạo</h1><p>Theo dõi tình hình ghi danh, tỷ lệ học lại và sĩ số theo đợt.</p></div><select class="form-select report-period-select"><option>Đợt học lại HK1 · 2026</option><option>Đợt bổ sung HK2 · 2025</option></select></div>
+                    <div class="row g-3 mb-3"><div class="col-sm-6 col-xl-3"><div class="report-kpi"><span>Chỗ còn trống</span><strong>—</strong><small>Dữ liệu từ API</small></div></div><div class="col-sm-6 col-xl-3"><div class="report-kpi"><span>Lượt ghi danh</span><strong>—</strong><small>Dữ liệu từ API</small></div></div><div class="col-sm-6 col-xl-3"><div class="report-kpi"><span>Đã thanh toán</span><strong>—</strong><small>Dữ liệu từ API</small></div></div><div class="col-sm-6 col-xl-3"><div class="report-kpi"><span>Lớp hoạt động</span><strong>—</strong><small>Dữ liệu từ API</small></div></div></div>
+                    <div class="row g-3"><div class="col-xl-7"><div class="card workflow-card h-100"><div class="card-header"><div><h3 class="card-title">Nghiệp vụ báo cáo</h3><small class="text-body-secondary">Chọn loại báo cáo cần xem hoặc xuất</small></div></div><div class="card-body report-actions"><button data-demo-action="report-retake"><span class="report-action-icon bg-purple"><i class="bi bi-graph-up-arrow"></i></span><span><strong>Tỷ lệ học lại theo bộ môn</strong><small>Nhận diện nhóm môn cần mở thêm lớp</small></span><i class="bi bi-chevron-right ms-auto"></i></button><button data-demo-action="report-summary"><span class="report-action-icon bg-blue"><i class="bi bi-clipboard-data"></i></span><span><strong>Tổng hợp theo đợt</strong><small>Đủ điều kiện, ghi danh, học phí và chỗ trống</small></span><i class="bi bi-chevron-right ms-auto"></i></button><button id="reportExportButton"><span class="report-action-icon bg-green"><i class="bi bi-file-earmark-spreadsheet"></i></span><span><strong>Xuất danh sách lớp</strong><small>Tệp CSV minh họa mở được bằng Excel</small></span><i class="bi bi-download ms-auto"></i></button></div></div></div>
+                        <div class="col-xl-5"><div class="card workflow-card h-100"><div class="card-header"><div><h3 class="card-title">Lớp có tỷ lệ ghi danh cao</h3><small class="text-body-secondary">Ưu tiên theo dõi chỉ tiêu</small></div></div><div class="card-body"><div class="report-course"><div><strong>CS201 · Cấu trúc dữ liệu &amp; giải thuật</strong><small>CS201_01 · 40/40 chỗ</small></div><span>100%</span><div class="progress w-100"><div class="progress-bar bg-danger" style="width:100%"></div></div></div><div class="report-course"><div><strong>IT101 · Nhập môn CNTT</strong><small>IT24A_01 · 35/35 chỗ</small></div><span>100%</span><div class="progress w-100"><div class="progress-bar bg-danger" style="width:100%"></div></div></div><div class="report-course"><div><strong>WEB301 · Lập trình Web nâng cao</strong><small>WEB301_01 · 37/40 chỗ</small></div><span>93%</span><div class="progress w-100"><div class="progress-bar bg-warning" style="width:93%"></div></div></div></div></div></div>
+                    </div>
+                </section>
             </div>
         </div>
     </main>
 
-    <footer class="app-footer">
-        <div class="float-end d-none d-sm-inline">
-            School Manager
-        </div>
-        <strong>
-            Quản lý sinh viên | AdminLTE 4
-        </strong>
-    </footer>
+    <footer class="app-footer"><div class="float-end d-none d-sm-inline">School Manager</div><strong>Quản lý đào tạo</strong><span class="footer-separator">·</span><span>Hệ thống quản lý đào tạo</span></footer>
 </div>
 
+<div class="modal fade" id="periodModal" tabindex="-1" aria-labelledby="periodModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form id="periodForm">
+        <div class="modal-header"><h5 class="modal-title" id="periodModalTitle">Tạo đợt đăng ký</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+        <div class="modal-body"><input type="hidden" id="periodId" /><div class="row g-3">
+            <div class="col-12"><label class="form-label" for="periodName">Tên đợt <span class="text-danger">*</span></label><input class="form-control" id="periodName" maxlength="200" required /></div>
+            <div class="col-12"><label class="form-label" for="periodSemesterId">Học kỳ <span class="text-danger">*</span></label><select class="form-select" id="periodSemesterId" required><option value="">Chọn học kỳ</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="periodStartTime">Bắt đầu <span class="text-danger">*</span></label><input class="form-control" id="periodStartTime" type="datetime-local" required /></div>
+            <div class="col-md-6"><label class="form-label" for="periodEndTime">Kết thúc <span class="text-danger">*</span></label><input class="form-control" id="periodEndTime" type="datetime-local" required /></div>
+            <div class="col-md-6"><label class="form-label" for="periodMinCredits">Tín chỉ tối thiểu</label><input class="form-control" id="periodMinCredits" type="number" min="0" max="255" value="12" required /></div>
+            <div class="col-md-6"><label class="form-label" for="periodMaxCredits">Tín chỉ tối đa</label><input class="form-control" id="periodMaxCredits" type="number" min="1" max="255" value="25" required /></div>
+            <div class="col-md-6 form-check ms-2"><input class="form-check-input" id="periodAllowRetake" type="checkbox" checked /><label class="form-check-label" for="periodAllowRetake">Cho phép học lại / cải thiện</label></div>
+            <div class="col-md-5 form-check"><input class="form-check-input" id="periodIsOpen" type="checkbox" checked /><label class="form-check-label" for="periodIsOpen">Mở cổng đăng ký ngay</label></div>
+        </div></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button><button type="submit" class="btn btn-primary">Lưu đợt đăng ký</button></div>
+    </form></div></div>
+</div>
 
+<div class="modal fade" id="equivalentModal" tabindex="-1" aria-labelledby="equivalentModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form id="equivalentForm">
+        <div class="modal-header"><h5 class="modal-title" id="equivalentModalTitle">Thêm quy tắc tương đương</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+        <div class="modal-body"><input type="hidden" id="equivalentId" /><div class="row g-3">
+            <div class="col-md-6"><label class="form-label" for="originalCourseId">Môn học gốc</label><select class="form-select" id="originalCourseId" required><option value="">Chọn môn gốc</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="equivalentCourseId">Môn thay thế</label><select class="form-select" id="equivalentCourseId" required><option value="">Chọn môn thay thế</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="equivalenceType">Loại tương đương</label><select class="form-select" id="equivalenceType" required><option value="1">Tương đương 1–1</option><option value="2">Thay thế hoàn toàn</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="equivalenceEffectDate">Ngày hiệu lực</label><input class="form-control" id="equivalenceEffectDate" type="date" /></div>
+            <div class="col-12"><label class="form-label" for="equivalenceNote">Ghi chú</label><textarea class="form-control" id="equivalenceNote" maxlength="500" rows="2"></textarea></div>
+        </div></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button><button type="submit" class="btn btn-primary">Lưu quy tắc</button></div>
+    </form></div></div>
+</div>
+
+<div class="modal fade" id="studentAddModal" tabindex="-1" aria-labelledby="studentAddModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><form id="studentAddForm">
+        <div class="modal-header"><h5 class="modal-title" id="studentAddModalTitle">Thêm sinh viên tham gia đợt</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+        <div class="modal-body">
+            <label class="form-label" for="eligibleStudentId">Sinh viên <span class="text-danger">*</span></label>
+            <select class="form-select" id="eligibleStudentId" required><option value="">Chọn sinh viên</option></select>
+            <label class="form-label mt-3" for="eligibleMaxCredits">Hạn mức tín chỉ riêng</label>
+            <input class="form-control" id="eligibleMaxCredits" type="number" min="0" max="255" placeholder="Để trống để dùng giới hạn chung của đợt" />
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button><button type="submit" class="btn btn-primary">Thêm sinh viên</button></div>
+    </form></div></div>
+</div>
+
+<div class="modal fade" id="managerAssignModal" tabindex="-1" aria-labelledby="managerAssignModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><form id="managerAssignForm">
+        <div class="modal-header"><h5 class="modal-title" id="managerAssignModalTitle">Phân công cố vấn / cán bộ phụ trách</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+        <div class="modal-body">
+            <label class="form-label" for="managerStudentId">Sinh viên <span class="text-danger">*</span></label>
+            <select class="form-select" id="managerStudentId" required><option value="">Chọn sinh viên</option></select>
+            <label class="form-label mt-3" for="managerEmployeeId">Cố vấn / cán bộ <span class="text-danger">*</span></label>
+            <select class="form-select" id="managerEmployeeId" required><option value="">Chọn cán bộ</option></select>
+            <label class="form-label mt-3" for="managerRoleType">Vai trò</label>
+            <select class="form-select" id="managerRoleType"><option value="1">Cố vấn học tập</option><option value="2">Cán bộ hỗ trợ</option></select>
+            <div class="form-check mt-3"><input class="form-check-input" id="managerIsPrimary" type="checkbox" /><label class="form-check-label" for="managerIsPrimary">Đặt làm cố vấn chính</label></div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button><button type="submit" class="btn btn-primary">Lưu phân công</button></div>
+    </form></div></div>
+</div>
+
+<div class="modal fade" id="sectionModal" tabindex="-1" aria-labelledby="sectionModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><form id="courseForm">
+        <div class="modal-header"><div><h5 class="modal-title" id="sectionModalTitle">Mở lớp học phần mới</h5><small class="text-body-secondary">Lưu trực tiếp qua API lớp học phần</small></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+        <div class="modal-body"><input type="hidden" id="sectionId" /><div class="row g-3">
+            <div class="col-md-6"><label class="form-label" for="courseId">Môn học <span class="text-danger">*</span></label><select id="courseId" class="form-select" required><option value="">Chọn môn học</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="semesterId">Học kỳ <span class="text-danger">*</span></label><select id="semesterId" class="form-select" required><option value="">Chọn học kỳ</option></select></div>
+            <div class="col-md-6"><label class="form-label" for="sectionCode">Mã lớp học phần <span class="text-danger">*</span></label><input type="text" id="sectionCode" class="form-control" maxlength="50" required /></div>
+            <div class="col-md-6"><label class="form-label" for="maxCapacity">Sĩ số tối đa <span class="text-danger">*</span></label><input type="number" id="maxCapacity" class="form-control" min="1" required /></div>
+        </div><div class="alert alert-light border mt-3 mb-0"><i class="bi bi-lightbulb text-primary me-2"></i><small>Lớp mới bắt đầu ở trạng thái <strong>Đang mở</strong>, sĩ số đăng ký bằng 0.</small></div></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button><button id="submitButton" type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1"></i>Lưu lớp học phần</button></div>
+    </form></div></div>
+</div>
+
+<div class="offcanvas offcanvas-end registration-drawer" tabindex="-1" id="registrationsDrawer" aria-labelledby="registrationsDrawerTitle">
+    <div class="offcanvas-header border-bottom"><div><h5 class="offcanvas-title" id="registrationsDrawerTitle">Sinh viên ghi danh</h5><small class="text-body-secondary" id="registrationsDrawerSubtitle"></small></div><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Đóng"></button></div>
+    <div class="drawer-summary" id="drawerSummary"></div>
+    <div class="offcanvas-body p-0"><div class="table-responsive"><table class="table table-hover align-middle mb-0 registration-table"><thead><tr><th>Sinh viên</th><th>Thời gian đăng ký</th><th>Loại đăng ký</th><th>Học phí</th></tr></thead><tbody id="registrationsTableBody"></tbody></table></div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/adminlte/js/adminlte.js"></script>
-
-
 <script type="module" src="/assets/js/student.js"></script>
 </body>
 </html>

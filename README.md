@@ -221,4 +221,15 @@ This project aims to develop a web platform for University Training Management S
 - Use GitHub Issues to track detailed tasks and bugs.
 - Utilize GitHub Projects for more advanced project management.
 
+## Retake Registration API
 
+The retake-registration pages use the same-origin `/api/v1` endpoints. The default configuration connects to SQL Server at `localhost:1433`, database `it24ab`, using the `sa` account. Set `DB_PASSWORD` in the environment before starting the application:
+
+```powershell
+$env:DB_PASSWORD = "your-password"
+.\mvnw.cmd spring-boot:run
+```
+
+The training-management UI reads and writes through the same-origin `/api/v1` services; it does not fall back to browser sample data when a request fails. Do not put database credentials in source files.
+
+The separate `sqlserver` profile also uses `it24ab` and disables Hibernate schema changes. Review and apply `database/migrations/001_retake_registration_api.sql` manually before using these APIs; the application does not run the migration. The existing database schema does not contain every table/column used by the retake-registration APIs, so the UI may report schema errors until the migration is reviewed and applied. Student self-service endpoints for listing, creating, and withdrawing a student's registrations remain deferred until authentication is integrated.
