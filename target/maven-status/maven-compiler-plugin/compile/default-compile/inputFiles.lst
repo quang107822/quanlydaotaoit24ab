@@ -1,3 +1,7 @@
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n2\controller\StudentController.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n2\entity\Student.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n2\repository\StudentRepository.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n2\service\StudentService.java
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\CourseRegistrationQueryController.java
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\EcourseSectionController.java
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\EquivalentCourseController.java
@@ -38,3 +42,7 @@ D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\ma
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\ManagerStudentService.java
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\RegistrationPeriodService.java
 D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\RegistrationReportService.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n7\controller\ScheduleController.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n7\entity\Schedule.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n7\repository\ScheduleRepository.java
+D:\study\JavaWeb1\BTGithubOfTeacher\quanlydaotaoit24ab\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n7\service\ScheduleService.java
