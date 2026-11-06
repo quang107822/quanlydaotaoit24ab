@@ -742,10 +742,17 @@ async function saveEquivalentCourse(event) {
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const id = document.getElementById('equivalentId').value;
+    const originalCourseId = document.getElementById('originalCourseId').value;
+    const equivalentCourseId = document.getElementById('equivalentCourseId').value;
+    if (originalCourseId === equivalentCourseId) {
+        notify('Môn gốc và môn thay thế phải là hai môn khác nhau.', 'warning');
+        document.getElementById('equivalentCourseId').focus();
+        return;
+    }
     const effectDate = document.getElementById('equivalenceEffectDate').value;
     const payload = {
-        originalCourseId: document.getElementById('originalCourseId').value,
-        equivalentCourseId: document.getElementById('equivalentCourseId').value,
+        originalCourseId,
+        equivalentCourseId,
         equivalenceType: Number(document.getElementById('equivalenceType').value),
         effectDate: effectDate || null,
         note: document.getElementById('equivalenceNote').value.trim() || null

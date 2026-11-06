@@ -134,10 +134,10 @@ public class RegistrationReportService {
                        COUNT(*) AS registration_count,
                        SUM(CASE WHEN r.registration_type = 2 THEN 1 ELSE 0 END) AS retake_count,
                        SUM(CASE WHEN r.registration_type = 3 THEN 1 ELSE 0 END) AS improvement_count
-                FROM dbo.course_registrations r
-                JOIN dbo.ecourse_sections s ON s.id = r.ecourse_section_id
-                JOIN dbo.courses c ON c.id = s.course_id
-                LEFT JOIN dbo.departments d ON d.id = c.department_id
+                FROM course_registrations r
+                JOIN ecourse_sections s ON s.id = r.ecourse_section_id
+                JOIN courses c ON c.id = s.course_id
+                LEFT JOIN departments d ON d.id = c.department_id
                 WHERE r.deleted_at IS NULL AND r.status = 1
                 """);
         List<Object> args = new ArrayList<>();
