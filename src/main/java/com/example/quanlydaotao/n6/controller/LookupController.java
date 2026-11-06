@@ -62,8 +62,8 @@ public class LookupController {
                 .toList();
     }
 
-    @GetMapping("/managers")
-    public List<PersonOption> managers() {
+    @GetMapping({"/lecturers", "/managers"})
+    public List<PersonOption> lecturers() {
         return employeeRepository.findByDeletedAtIsNullOrderByCodeAsc().stream()
                 .map(employee -> new PersonOption(employee.getId(), employee.getCode(), employee.getFullName()))
                 .toList();

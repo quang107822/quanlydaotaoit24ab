@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.Nationalized;
 
 @Entity
 @Table(name = "courses")
@@ -22,6 +23,7 @@ public class CourseLookup {
     private String code;
 
     @Column(name = "name")
+    @Nationalized
     private String name;
 
     @Column(name = "credits")

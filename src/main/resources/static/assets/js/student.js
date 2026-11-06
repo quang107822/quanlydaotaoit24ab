@@ -23,6 +23,9 @@ let searchTimer;
 let eligibleImportInput;
 
 document.addEventListener('DOMContentLoaded', () => {
+    bindModuleNavigation();
+    showScreen(window.location.hash.slice(1) || 'sections', false);
+
     if (!window.bootstrap?.Modal || !window.bootstrap?.Offcanvas) {
         notify('Không tải được thành phần giao diện Bootstrap. Hãy kiểm tra kết nối rồi tải lại trang.', 'danger');
         return;
@@ -35,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     managerAssignModal = window.bootstrap.Modal.getOrCreateInstance(document.getElementById('managerAssignModal'));
     registrationsDrawer = window.bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('registrationsDrawer'));
     bindEvents();
-    bindModuleNavigation();
-    showScreen(window.location.hash.slice(1) || 'sections', false);
     initializeFromApi();
 });
 
@@ -60,19 +61,25 @@ async function initializeFromApi() {
 }
 
 async function loadLookups() {
-    const [courseResults, semesterResults, studentResults, managerResults] = await Promise.all([
+    const results = await Promise.allSettled([
         apiRequest(API_ENDPOINTS.COURSES),
         apiRequest(API_ENDPOINTS.SEMESTERS),
         apiRequest(API_ENDPOINTS.STUDENTS),
-        apiRequest(API_ENDPOINTS.MANAGERS)
+        apiRequest(API_ENDPOINTS.LECTURERS)
     ]);
-    courses.splice(0, courses.length, ...courseResults);
-    semesters.splice(0, semesters.length, ...semesterResults);
-    students = studentResults;
-    managers = managerResults;
+    const failures = [];
+    const applyResult = (result, apply) => {
+        if (result.status === 'fulfilled') apply(result.value);
+        else failures.push(result.reason);
+    };
+    applyResult(results[0], (items) => courses.splice(0, courses.length, ...items));
+    applyResult(results[1], (items) => semesters.splice(0, semesters.length, ...items));
+    applyResult(results[2], (items) => { students = items; });
+    applyResult(results[3], (items) => { managers = items; });
     populateLookups();
     populatePeopleSelectors();
     renderCourseCatalog();
+    if (failures.length > 0) throw failures[0];
 }
 
 async function loadRegistrationPeriods() {
@@ -568,7 +575,9 @@ function showScreen(name, closeSidebar) {
         name = 'sections';
     }
     document.querySelectorAll('.module-screen').forEach((element) => {
-        element.classList.toggle('active', element.id === `screen-${name}`);
+        const active = element.id === `screen-${name}`;
+        element.classList.toggle('active', active);
+        element.hidden = !active;
     });
     document.querySelectorAll('.sidebar-menu [data-screen]').forEach((link) => {
         const active = link.dataset.screen === name;

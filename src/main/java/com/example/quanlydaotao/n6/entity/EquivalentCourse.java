@@ -13,6 +13,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.Nationalized;
 
 @Entity
 @Table(name = "course_equivalences")
@@ -39,6 +40,7 @@ public class EquivalentCourse {
     private Boolean isActive = true;
 
     @Column(length = 500)
+    @Nationalized
     private String note;
 
     @Column(name = "created_at", nullable = false, updatable = false)

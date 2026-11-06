@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.Nationalized;
 
 @Entity
 @Table(name = "students")
@@ -20,6 +21,7 @@ public class StudentLookup {
     private String code;
 
     @Column(name = "full_name")
+    @Nationalized
     private String fullName;
 
 }

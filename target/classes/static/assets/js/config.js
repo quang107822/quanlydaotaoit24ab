@@ -10,5 +10,5 @@ export const API_ENDPOINTS = {
     COURSES: `${BASE_URL}/lookups/courses`,
     SEMESTERS: `${BASE_URL}/lookups/semesters`,
     STUDENTS: `${BASE_URL}/lookups/students`,
-    MANAGERS: `${BASE_URL}/lookups/managers`,
+    LECTURERS: `${BASE_URL}/lookups/lecturers`,
 };

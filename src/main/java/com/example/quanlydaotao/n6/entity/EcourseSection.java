@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Version;
 import lombok.Data;
+import org.hibernate.annotations.Nationalized;
 
 @Entity
 @Table(name = "ecourse_sections", uniqueConstraints = @UniqueConstraint(
@@ -39,6 +40,7 @@ public class EcourseSection {
     private String courseCode;
 
     @Column(name = "course_name", nullable = false, length = 255)
+    @Nationalized
     private String courseName;
 
     @Column(nullable = false)

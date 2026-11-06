@@ -12,6 +12,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.Nationalized;
 
 @Entity
 @Table(name = "registration_periods")
@@ -23,6 +24,7 @@ public class RegistrationPeriod {
     private UUID id;
 
     @Column(nullable = false, length = 200)
+    @Nationalized
     private String name;
 
     @Column(name = "semester_id", nullable = false)

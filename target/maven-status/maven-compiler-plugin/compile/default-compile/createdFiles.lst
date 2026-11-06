@@ -48,6 +48,7 @@ com\example\quanlydaotao\n6\entity\EquivalentCourse.class
 com\example\quanlydaotao\n6\dto\RegistrationDtos$PeriodSummary.class
 com\example\quanlydaotao\n6\repository\SemesterLookupRepository.class
 com\example\quanlydaotao\n6\repository\RegistrationPeriodRepository.class
+com\example\quanlydaotao\n6\dto\RegistrationDtos$PersonOption.class
 com\example\quanlydaotao\n6\entity\StudentLookup.class
 com\example\quanlydaotao\n6\controller\ListStudentController.class
 com\example\quanlydaotao\n6\repository\DepartmentLookupRepository.class
