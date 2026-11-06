@@ -1,40 +1,40 @@
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\CourseRegistrationQueryController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\EcourseSectionController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\EquivalentCourseController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\ListStudentController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\LookupController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\ManagerStudentController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\RegistrationPeriodController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\controller\RegistrationReportController.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\dto\EcourseSectionDTO.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\dto\RegistrationDtos.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\CourseLookup.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\CourseRegistration.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\DepartmentLookup.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\EcourseSection.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\EmployeeLookup.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\EquivalentCourse.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\ListStudent.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\ManagerStudent.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\RegistrationPeriod.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\SemesterLookup.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\entity\StudentLookup.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\QuanlydaotaoApplication.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\CourseLookupRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\CourseRegistrationRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\DepartmentLookupRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\EcourseSectionRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\EmployeeLookupRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\EquivalentCourseRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\ListStudentRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\ManagerStudentRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\RegistrationPeriodRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\SemesterLookupRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\repository\StudentLookupRepository.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\CourseRegistrationQueryService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\EcourseSectionService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\EquivalentCourseService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\ListStudentService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\ManagerStudentService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\RegistrationPeriodService.java
-D:\study\JavaWeb1\quanlydaotaoit24ab (1)\src\main\java\com\example\quanlydaotao\n6\service\RegistrationReportService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\CourseRegistrationQueryController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\EcourseSectionController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\EquivalentCourseController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\ListStudentController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\LookupController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\ManagerStudentController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\RegistrationPeriodController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\controller\RegistrationReportController.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\dto\EcourseSectionDTO.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\dto\RegistrationDtos.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\CourseLookup.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\CourseRegistration.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\DepartmentLookup.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\EcourseSection.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\EmployeeLookup.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\EquivalentCourse.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\ListStudent.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\ManagerStudent.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\RegistrationPeriod.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\SemesterLookup.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\entity\StudentLookup.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\QuanlydaotaoApplication.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\CourseLookupRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\CourseRegistrationRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\DepartmentLookupRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\EcourseSectionRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\EmployeeLookupRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\EquivalentCourseRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\ListStudentRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\ManagerStudentRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\RegistrationPeriodRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\SemesterLookupRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\repository\StudentLookupRepository.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\CourseRegistrationQueryService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\EcourseSectionService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\EquivalentCourseService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\ListStudentService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\ManagerStudentService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\RegistrationPeriodService.java
+d:\study\JavaWeb1\quanlydaotaoit24ab\src\main\java\com\example\quanlydaotao\n6\service\RegistrationReportService.java
