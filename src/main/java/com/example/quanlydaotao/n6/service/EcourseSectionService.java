@@ -185,7 +185,7 @@ public class EcourseSectionService {
     }
 
     private static String normalize(String value) {
-        return value == null || value.isBlank() ? null : value.trim();
+        return value == null || value.isBlank() ? "" : value.trim();
     }
 
     private static ResponseStatusException notFound(String message) {

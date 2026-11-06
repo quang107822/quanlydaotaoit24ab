@@ -20,7 +20,7 @@ public interface RegistrationPeriodRepository extends JpaRepository<Registration
               and (:semesterId is null or p.semesterId = :semesterId)
               and (:isActive is null or p.isActive = :isActive)
               and (:isOpen is null or p.isOpen = :isOpen)
-              and (:keyword is null or lower(p.name) like lower(concat('%', :keyword, '%')))
+              and (:keyword = '' or lower(p.name) like lower(concat('%', :keyword, '%')))
             """)
     Page<RegistrationPeriod> search(
             @Param("semesterId") UUID semesterId,

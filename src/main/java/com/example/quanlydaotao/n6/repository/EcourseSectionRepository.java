@@ -21,7 +21,7 @@ public interface EcourseSectionRepository extends JpaRepository<EcourseSection, 
               and (:semesterId is null or s.semesterId = :semesterId)
               and (:status is null or s.status = :status)
               and (:courseId is null or s.courseId = :courseId)
-              and (:keyword is null
+              and (:keyword = ''
                    or lower(s.code) like lower(concat('%', :keyword, '%'))
                    or lower(s.courseCode) like lower(concat('%', :keyword, '%'))
                    or lower(s.courseName) like lower(concat('%', :keyword, '%')))
